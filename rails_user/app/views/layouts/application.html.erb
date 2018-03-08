@@ -9,10 +9,14 @@
   </head>
 
   <body>
-  
+  <%=flash[:danger]%><br>
+  <%if user_signed_in?%>
+  <%= link_to '로그아웃', logout_path, method:'delete'%>
+  <%else%>
+  <%= link_to '로그인', login_path %>
   <a href="/users/new">회원 가입</a>
   <%= link_to '회원 가입', new_user_path %>
-  
+  <%end%>
     <%= yield %>
   </body>
 </html>
