@@ -1,0 +1,40 @@
+<h1>timeline</h1>
+<%=form_tag  '/write', method: 'post' do%>
+    <textarea name="naeyoung"></textarea><br>
+    <input type="submit">
+<% end %>
+<ul>
+<% @blogs.each do |b| %>
+<li>
+<%=b.user.email%> : <%=b.content%>
+<%=form_tag  '/comment', method: 'post' do%>
+    <input type="hidden" name="blogid" value="<%=b.id%>">
+    <input type="text" name="comment">
+    <input type="submit">
+<% end %>
+<ol>
+<%b.comments.each do |c|%>
+    <li><%=c.user.email%> : <%=c.msg%></li>
+<%end%>
+</ol>
+</li>
+<%end%>
+<br>
+내 블로그 보기
+<br>
+<% @myblogs.each do |b| %>
+<li>
+<%=b.user.email%> : <%=b.content%>
+<%=form_tag  '/comment', method: 'post' do%>
+    <input type="hidden" name="blogid" value="<%=b.id%>">
+    <input type="text" name="comment">
+    <input type="submit">
+<% end %>
+<ol>
+<%b.comments.each do |c|%>
+    <li><%=c.user.email%> : <%=c.msg%></li>
+<%end%>
+</ol>
+</li>
+<%end%>
+</ul>
