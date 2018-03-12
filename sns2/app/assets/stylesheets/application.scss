@@ -1,0 +1,5 @@
+ @import 'materialize';
+ (function(){
+    $(".button-collapse").sideNav();
+  }).call(this);
+  
